@@ -3,6 +3,7 @@ package kr.re.kitri.hello.apple;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class AppleFilter {
 
@@ -36,10 +37,16 @@ public class AppleFilter {
                         apple -> apple.getColor().equals("green")
                                             && apple.getWeight() < 100);
 
-        System.out.println(result4);
+        // System.out.println(result4);
+
+        Predicate<Apple> p = (a) -> a.getWeight() >= 100;
+
+        List<Apple> list5 =
+                filterApples(apples, p.and(a -> a.getColor().equals("red")));
+        System.out.println(list5);
     }
 
-    public static List<Apple> filterApples(List<Apple> list, ApplePredicate p) {
+    public static List<Apple> filterApples(List<Apple> list, Predicate<Apple> p) {
         List<Apple> result = new ArrayList<>();
 
         for (Apple apple : list) {
