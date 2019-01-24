@@ -12,10 +12,10 @@ import java.util.stream.Collectors;
 public class CustomGrouping {
     public static void main(String[] args) throws Exception {
         // 1. 파일을 스트림으로 변환
-        Path file = Paths.get(
+        var file = Paths.get(
                 "C:\\Users\\Administrator\\IdeaProjects\\hello\\src\\main\\resources\\Salaries.csv");
 
-        Map<String, List<Player>> collect = Files.lines(file)
+        var collect = Files.lines(file)
                 .skip(1)
                 .map(line -> {
                     String[] splitted = line.split(",");
@@ -43,7 +43,7 @@ public class CustomGrouping {
         // 100만불 미만은 "저액연봉"
 
 
-        List<Player> list = Files.lines(file)
+        var list = Files.lines(file)
                 .skip(1)
                 .map(line -> {
                     String[] splitted = line.split(",");
